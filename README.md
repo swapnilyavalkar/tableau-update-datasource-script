@@ -19,7 +19,7 @@ Ensure the following components are set up before running the script:
 - **Required Python Libraries**: Install using `pip install -r requirements.txt`
 - **PostgreSQL**: The script connects to a PostgreSQL database to fetch data.
 - **Tableau Server Client (TSC)**: The script interacts with Tableau Server using the `tableauserverclient` library.
-- **Configuration File**: Ensure your `config.py` file is properly set up with PostgreSQL connection details.
+- **Configuration File**: Ensure your `pgdatabase.ini` file is properly set up with PostgreSQL connection details.
 
 ## 📋 Script Overview
 
