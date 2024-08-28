@@ -1,8 +1,8 @@
 ---
 
-# 🗄️ Tableau Server Data Connection Update Script
+# 🗄️ Tableau Server DataSource Update Script
 
-This Python script automates the process of updating specific data connections in Tableau Server, particularly targeting Oracle connections. It fetches data from a PostgreSQL database and updates the connection information on Tableau Server accordingly.
+This Python script automates the process of updating specific data connections in Tableau Server. It fetches data from a PostgreSQL database and updates the connection information on Tableau Server accordingly.
 
 ## 🚀 Features
 
@@ -26,7 +26,7 @@ Ensure the following components are set up before running the script:
 This script operates through a sequence of steps:
 
 ### 1. **Initialize Connection to PostgreSQL Database**
-   - Establishes a connection to the PostgreSQL database using credentials from the `config.py` file.
+   - Establishes a connection to the PostgreSQL database.
    - Executes an SQL query to retrieve data relevant to Tableau data sources.
 
 ### 2. **Export Initial Data**
@@ -40,7 +40,7 @@ This script operates through a sequence of steps:
    - Switches the Tableau Server context to the appropriate site for each iteration.
 
 ### 5. **Update Data Connections**
-   - Locates the relevant data sources and updates Oracle connection details based on specific conditions.
+   - Locates the relevant data sources and updates connection details based on specific conditions.
    - Logs and stores updated connection details in a DataFrame.
 
 ### 6. **Export Processed Data**
@@ -52,25 +52,11 @@ This script operates through a sequence of steps:
 ├── sql-query.sql              # SQL query file used to fetch data from PostgreSQL
 ├── data-all-ds.xlsx           # Exported file with initial data from PostgreSQL
 ├── df_processed_ds.xlsx       # Exported file with updated connection details
-├── config.py                  # Configuration file with database connection details
-└── script.py                  # Main Python script
+├── pgdatabase.ini             # Configuration file with database connection details
+└── main.py                  # Main Python script
 ```
 
 ## ⚙️ Configuration
-
-### **config.py**
-Make sure your `config.py` contains the correct connection parameters for your PostgreSQL database:
-
-```python
-def configpg():
-    return {
-        'dbname': 'your_db_name',
-        'user': 'your_db_user',
-        'password': 'your_db_password',
-        'host': 'your_db_host',
-        'port': 'your_db_port'
-    }
-```
 
 ### **Script Variables**
 
@@ -78,6 +64,7 @@ def configpg():
 - **TS_USER_NAME**: Tableau Server username.
 - **TS_PASSWORD**: Tableau Server password.
 - **SITE_NAME**: Name of the Tableau site (if applicable).
+- **pgdatabase.ini**: Mention your Tableau repository db details.
 
 ## 🚨 Error Handling
 
@@ -87,8 +74,8 @@ The script includes a basic exception handling mechanism that prints any errors 
 
 1. **Clone the Repository**: Clone this repository to your local machine.
 2. **Install Dependencies**: Run `pip install -r requirements.txt` to install necessary packages.
-3. **Update Configuration**: Ensure that your `config.py` and script variables are correctly set.
-4. **Run the Script**: Execute the script using `python script.py`.
+3. **Update Configuration**: Ensure that your `pgdatabase.ini` and script variables are correctly set.
+4. **Run the Script**: Execute the script using `python main.py`.
 5. **Review Outputs**: Check the generated Excel files (`data-all-ds.xlsx` and `df_processed_ds.xlsx`) for initial and updated connection details.
 
 ## 🛡️ License
@@ -96,5 +83,3 @@ The script includes a basic exception handling mechanism that prints any errors 
 This script is licensed under the MIT License. See the `LICENSE` file for more information.
 
 ---
-
-Feel free to adjust any section to better fit your needs or style!
